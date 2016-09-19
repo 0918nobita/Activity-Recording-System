@@ -10,12 +10,12 @@
         <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
         <DataGrid Name="dataGrid" Margin="10,283,10,10" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True">
         </DataGrid>
-        <TextBox Name="textBox" Height="23" Margin="10,91,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox Name="title" Height="23" Margin="10,91,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
         <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
         <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="textBox_Copy" Margin="10,139,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
-        <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <DatePicker HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="content" Margin="10,139,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
+        <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
