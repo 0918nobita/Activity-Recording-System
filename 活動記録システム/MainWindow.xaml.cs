@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.IO;
 using System.Text;
+using System.Collections;
 
 namespace 活動記録システム
 {
@@ -13,11 +14,15 @@ namespace 活動記録システム
         {
             InitializeComponent();
             string path = "./activity.csv";
+            string csvText;
             if (!System.IO.File.Exists(path))
             {
                 using (FileStream fs = File.Create(path)) {}
             }
-            StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8"));
+            using (StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
+            {
+                csvText = sr.ReadToEnd();
+            }
         }
     }
 }
