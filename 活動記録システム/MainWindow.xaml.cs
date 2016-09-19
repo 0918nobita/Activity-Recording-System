@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Windows;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace 活動記録システム
 {
@@ -23,6 +12,12 @@ namespace 活動記録システム
         public MainWindow()
         {
             InitializeComponent();
+            string path = "./activity.csv";
+            if (!System.IO.File.Exists(path))
+            {
+                using (FileStream fs = File.Create(path)) {}
+            }
+            StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8"));
         }
     }
 }
