@@ -11,7 +11,7 @@ namespace 活動記録システム
     public partial class MainWindow : Window
     {
         public ObservableCollection<Activity> Collection { get; set; }
-        private string path = "./activity.csv";
+        private string @path = "./activity.csv";
 
         public MainWindow()
         {
@@ -28,6 +28,7 @@ namespace 活動記録システム
 
         private void updateHistory()
         {
+            Collection.Clear();
             string csvText;
 
             using (StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
@@ -35,8 +36,24 @@ namespace 活動記録システム
                 csvText = sr.ReadToEnd();
             }
 
-            StringReader rs = new StringReader(csvText);
-            Collection.Add(new Activity { Date = "2016/09/19", Title = "サンプル", Content = "本文" });
+            using (StringReader reader = new StringReader(csvText))
+            {
+                while (reader.Peek() > -1)
+                {
+                    string line = reader.ReadLine();
+                    if (!line.Equals(""))
+                    {
+                        string[] cells = line.Split(',');
+                        Collection.Insert(0, new Activity { Date = cells[0], Title = cells[1], Content = cells[2] });
+                    }
+                }
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            File.AppendAllText(@path, date.Text + "," + title.Text + "," + content.Text + "\n");
+            updateHistory();
         }
     }
 }
