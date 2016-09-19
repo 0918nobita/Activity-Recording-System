@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:活動記録システム"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="350" Width="525">
+        Title="活動記録システム" Height="650.215" Width="525">
     <Grid>
         <Label x:Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dataGrid" Margin="10,283,10,10"/>
+        <TextBox x:Name="textBox" Height="23" Margin="10,91,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,257,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Copy" Margin="10,139,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <DatePicker HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
