@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.IO;
 using System.Text;
-using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace 活動記録システム
 {
@@ -10,33 +10,40 @@ namespace 活動記録システム
     /// </summary>
     public partial class MainWindow : Window
     {
-        string path = "./activity.csv";
+        public ObservableCollection<Activity> Collection { get; set; }
+        private string path = "./activity.csv";
 
         public MainWindow()
         {
+            Collection = new ObservableCollection<Activity>();
             InitializeComponent();
-
-            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "日付", IsReadOnly = true });
-            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "タイトル", IsReadOnly = true });
-            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "内容", IsReadOnly = true });
 
             if (!System.IO.File.Exists(path))
             {
                 using (FileStream fs = File.Create(path)) {}
-                updateHistory();
             }
+
+            updateHistory();
         }
+
         private void updateHistory()
         {
             string csvText;
+
             using (StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
             {
                 csvText = sr.ReadToEnd();
             }
+
             StringReader rs = new StringReader(csvText);
-            while (rs.Peek() > -1)
-            {
-            }
+            Collection.Add(new Activity { Date = "2016/09/19", Title = "サンプル", Content = "本文" });
         }
     }
+}
+
+public class Activity
+{
+    public string Date { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
 }

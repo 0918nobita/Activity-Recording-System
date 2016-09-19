@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:活動記録システム"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="650.215" Width="525">
-    <Grid>
+        Title="活動記録システム" Height="650.215" Width="525" Name="Window">
+    <Grid DataContext="{Binding ElementName=Window, Path=.}">
         <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
-        <DataGrid Name="dataGrid" Margin="10,283,10,10"/>
+        <DataGrid Name="dataGrid" Margin="10,283,10,10" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True">
+        </DataGrid>
         <TextBox Name="textBox" Height="23" Margin="10,91,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
         <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
