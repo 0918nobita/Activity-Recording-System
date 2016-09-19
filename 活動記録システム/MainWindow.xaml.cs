@@ -10,18 +10,26 @@ namespace 活動記録システム
     /// </summary>
     public partial class MainWindow : Window
     {
+        string path = "./activity.csv";
         public MainWindow()
         {
             InitializeComponent();
-            string path = "./activity.csv";
-            string csvText;
             if (!System.IO.File.Exists(path))
             {
                 using (FileStream fs = File.Create(path)) {}
+                updateHistory();
             }
+        }
+        private void updateHistory()
+        {
+            string csvText;
             using (StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
             {
                 csvText = sr.ReadToEnd();
+            }
+            StringReader rs = new StringReader(csvText);
+            while (rs.Peek() > -1)
+            {
             }
         }
     }
