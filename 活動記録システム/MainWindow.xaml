@@ -8,5 +8,6 @@
         Title="活動記録システム" Height="350" Width="525">
     <Grid>
         <Label x:Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </Window>
