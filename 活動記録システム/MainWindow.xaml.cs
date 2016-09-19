@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.IO;
 using System.Text;
-using System.Collections;
+using System.Windows.Controls;
 
 namespace 活動記録システム
 {
@@ -11,9 +11,15 @@ namespace 活動記録システム
     public partial class MainWindow : Window
     {
         string path = "./activity.csv";
+
         public MainWindow()
         {
             InitializeComponent();
+
+            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "日付", IsReadOnly = true });
+            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "タイトル", IsReadOnly = true });
+            dataGrid.Columns.Add(new DataGridTextColumn() { Header = "内容", IsReadOnly = true });
+
             if (!System.IO.File.Exists(path))
             {
                 using (FileStream fs = File.Create(path)) {}
