@@ -20,7 +20,7 @@ namespace 活動記録システム
 
             if (!System.IO.File.Exists(path))
             {
-                using (FileStream fs = File.Create(path)) { }
+                using (FileStream fileStream = File.Create(path)) { }
             }
 
             updateHistory();
@@ -31,16 +31,16 @@ namespace 活動記録システム
             Collection.Clear();
             string csvText;
 
-            using (StreamReader sr = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
+            using (StreamReader streamReader = new StreamReader(path, Encoding.GetEncoding("UTF-8")))
             {
-                csvText = sr.ReadToEnd();
+                csvText = streamReader.ReadToEnd();
             }
 
-            using (StringReader reader = new StringReader(csvText))
+            using (StringReader stringReader = new StringReader(csvText))
             {
-                while (reader.Peek() > -1)
+                while (stringReader.Peek() > -1)
                 {
-                    string line = reader.ReadLine();
+                    string line = stringReader.ReadLine();
                     if (!line.Equals(""))
                     {
                         string[] cells = line.Split(',');
