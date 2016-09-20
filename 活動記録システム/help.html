@@ -3,8 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>ヘルプ | 活動記録システム</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        #menu_wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30vw;
+            height: 100vh;
+            background-color: #007777;
+        }
+        #menu {
+            margin: 10px;
+            color: white;
+        }
+        .menu_item {
+            padding: 0.5em;
+        }
+        .menu_item:hover {
+            font-weight: bold;
+            background-color: #006060;
+        }
+        #content_wrap {
+            position: absolute;
+            top: 0;
+            left: 30vw;
+            width: 70vw;
+            height: 100vh;
+            background-color: #F8F8F8;
+        }
+        #content {
+            margin: 10px;
+        }
+    </style>
 </head>
-<body>
-    <h1>ヘルプ</h1>
+<body unselectable="on" onSelectStart="return false;">
+    <div id="menu_wrap">
+        <div id="menu">
+            <h1>活動記録システム</h1>
+            <p>日々の活動内容を記録していくためのウィンドウアプリケーション</p>
+        </div>
+    </div>
+    <div id="content_wrap">
+        <div id="content">←の項目から選んでください。</div>
+    </div>
+    <script>
+        var Help = function () {
+            this.data = [{
+                title: "活動内容を記録する",
+                content: "「活動記録システム.exe」を起動し、名前・日付・タイトル・内容を記入してください。<br><br>記入し終わったら、「記録する」ボタンを押して完了です。"
+            }, {
+                title: "終了する",
+                content: "ウィンドウ右上の「×」ボタンを押すか、<br><br>メニューバーの「ファイル」→「閉じる」をクリックして終了できます。"
+            }, {
+                title: "開発環境",
+                content: "Visual Studio Enterprise 2015 を使用して開発しました。<br><br>使ったプログラミング言語は C# で、UIサブシステムには WPF を採用しています。"
+            }];
+            this.menuElement = document.getElementById("menu");
+            this.contentElement = document.getElementById("content");
+            for (var i = 0; i < this.data.length; i++) {
+                var element = document.createElement("div");
+                element.className = "menu_item";
+                element.dataset.id = "" + i;
+                element.innerHTML = "<p>" + this.data[i].title + "</p>";
+                var self = this;
+                element.onclick = function () {
+                    self.show(parseInt(this.dataset.id));
+                }
+                this.menuElement.appendChild(element);
+            }
+        };
+        Help.prototype.show = function (id) {
+            this.contentElement.innerHTML = "<h1>" + this.data[id].title + "</h1>"+
+                "<p>" + this.data[id].content + "</p>";
+        }
+        var help = new Help();
+    </script>
 </body>
 </html>
