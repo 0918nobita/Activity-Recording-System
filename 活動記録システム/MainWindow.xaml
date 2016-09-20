@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:活動記録システム"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="579.215" Width="525" Name="Window">
+        Title="活動記録システム" Height="622.215" Width="525" Name="Window">
     <Grid DataContext="{Binding ElementName=Window, Path=.}" Margin="0">
         <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
-        <DataGrid Name="dataGrid" Margin="10,343,10,10" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True"/>
-        <TextBox Name="title" Height="23" Margin="10,150,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
-        <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top"/>
-        <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="content" Margin="10,199,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
-        <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
+        <DataGrid Name="dataGrid" Margin="10,348,10,13" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True"/>
+        <TextBox Name="title" Height="23" Margin="10,155,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
+        <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top"/>
+        <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,322,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="content" Margin="10,204,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
+        <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
         <Menu Name="menu" Margin="0" VerticalAlignment="Top">
             <MenuItem Header="ファイル">
                 <MenuItem Name="close" Header="閉じる" Click="close_Click" />
@@ -26,9 +26,17 @@
                 <MenuItem Header="バージョン情報" Click="version_Click"/>
             </MenuItem>
         </Menu>
-        <Button Name="button1" Content="部員を追加する" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95"/>
-        <TextBox Name="textBox" Height="20" Margin="0,75,110,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
+        <Button Name="button1" Content="部員を追加する" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Click="add_member_Click"/>
+        <TextBox Name="member_name" Height="20" Margin="0,75,110,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
         <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
+        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Margin="2.5" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>
