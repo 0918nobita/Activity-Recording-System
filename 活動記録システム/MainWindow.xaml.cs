@@ -20,7 +20,7 @@ namespace 活動記録システム
 
             if (!System.IO.File.Exists(path))
             {
-                using (FileStream fs = File.Create(path)) {}
+                using (FileStream fs = File.Create(path)) { }
             }
 
             updateHistory();
@@ -55,12 +55,27 @@ namespace 活動記録システム
             File.AppendAllText(@path, date.Text + "," + title.Text + "," + content.Text + "\n");
             updateHistory();
         }
-    }
-}
 
-public class Activity
-{
-    public string Date { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            Window.Close();
+        }
+
+        private void help_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("help.html");
+        }
+
+        private void version_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("活動記録システム Version 1.0\n対象フレームワーク .NET Framework 4.5.2\n開発者 0918nobita");
+        }
+    }
+
+    public class Activity
+    {
+        public string Date { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
 }
