@@ -29,14 +29,6 @@
         <Button Name="button1" Content="部員を追加する" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Click="add_member_Click"/>
         <TextBox Name="member_name" Height="20" Margin="0,75,110,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
         <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" Margin="2.5" />
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}" DisplayMemberPath="Name"/>
     </Grid>
 </Window>
