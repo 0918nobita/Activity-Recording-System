@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:活動記録システム"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="622.215" Width="525" Name="Window">
+        Title="活動記録システム" Height="622.215" Width="525" Name="Window" MinWidth="400" MinHeight="365">
     <Grid DataContext="{Binding ElementName=Window, Path=.}" Margin="0">
         <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
         <DataGrid Name="dataGrid" Margin="10,348,10,13" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True"/>
