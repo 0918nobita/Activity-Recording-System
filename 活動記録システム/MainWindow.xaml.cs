@@ -52,6 +52,9 @@ namespace 活動記録システム
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            if (date.Text.Equals("")) { MessageBox.Show("日付が選択されていません"); return; }
+            if (title.Text.Equals("")) { MessageBox.Show("タイトルが入力されていません"); return; }
+            if (content.Text.Equals("")) { MessageBox.Show("内容が入力されていません"); return; }
             File.AppendAllText(@path, date.Text + "," + title.Text + "," + content.Text + "\n");
             updateHistory();
         }
