@@ -26,8 +26,8 @@
                 <MenuItem Header="バージョン情報" Click="version_Click"/>
             </MenuItem>
         </Menu>
-        <Button Name="button1" Content="部員を追加する" HorizontalAlignment="Left" Margin="412,75,0,0" VerticalAlignment="Top" Width="95"/>
-        <TextBox Name="textBox" HorizontalAlignment="Left" Height="20" Margin="287,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Name="button1" Content="部員を追加する" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95"/>
+        <TextBox Name="textBox" Height="20" Margin="0,75,110,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
         <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
     </Grid>
