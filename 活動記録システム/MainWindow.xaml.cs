@@ -100,6 +100,7 @@ namespace 活動記録システム
         {
             MessageBox.Show("活動記録システム Version 1.0\n対象フレームワーク .NET Framework 4.5.2\n開発者 0918nobita");
         }
+
         private void add_member_Click(object sender, RoutedEventArgs e)
         {
             if (member_name.Text.Equals("")) { MessageBox.Show("名前が入力されていません"); return; }
