@@ -6,18 +6,9 @@
         xmlns:local="clr-namespace:活動記録システム"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="622.215" Width="525" Name="Window" MinWidth="400" MinHeight="365">
-    <Grid DataContext="{Binding ElementName=Window, Path=.}" Margin="0">
-        <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
-        <DataGrid Name="dataGrid" Margin="10,348,10,13" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True"/>
-        <TextBox Name="title" Height="23" Margin="10,155,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
-        <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top"/>
-        <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,322,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="content" Margin="10,204,10,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top"/>
-        <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
-        <Menu Name="menu" Margin="0" VerticalAlignment="Top">
+        Title="活動記録システム" Height="622.215" Width="1000" Name="Window" MinWidth="400" MinHeight="365">
+    <Grid Margin="0">
+        <Menu Name="menu" VerticalAlignment="Top">
             <MenuItem Header="ファイル">
                 <MenuItem Name="close" Header="閉じる" Click="close_Click" />
             </MenuItem>
@@ -26,9 +17,21 @@
                 <MenuItem Header="バージョン情報" Click="version_Click"/>
             </MenuItem>
         </Menu>
-        <Button Name="button1" Content="部員を追加する" Margin="0,75,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Click="add_member_Click"/>
-        <TextBox Name="member_name" Height="20" Margin="0,75,110,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
-        <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}" DisplayMemberPath="Name"/>
+        <Grid DataContext="{Binding ., ElementName=Window}" Margin="10,18,10,0">
+            <Label x:Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
+            <DataGrid x:Name="dataGrid" Margin="10,340,0,40" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True" HorizontalAlignment="Left" Width="317" />
+            <TextBox x:Name="title" Height="18" Margin="10,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="317"/>
+            <Label x:Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="content" Margin="10,196,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
+            <Button x:Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+            <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
+            <Button x:Name="button1" Content="部員を追加する" Margin="181,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95" Click="add_member_Click" Height="25"/>
+            <TextBox x:Name="member_name" Height="25" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="166"/>
+            <Label x:Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}" DisplayMemberPath="Name"/>
+            <WebBrowser Margin="332,10,0,10" Source="http://google.co.jp/"/>
+        </Grid>
     </Grid>
 </Window>
