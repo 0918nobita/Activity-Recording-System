@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Gecko;
+using System.Windows;
 using System.IO;
 using System.Text;
 using System.Collections.ObjectModel;
@@ -10,6 +11,7 @@ namespace 活動記録システム
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GeckoWebBrowser _browser;
         public ObservableCollection<Person> MemberCollection { get; set; }
         public ObservableCollection<Activity> Collection { get; set; }
         private string @path = "./activity.csv";
@@ -107,6 +109,24 @@ namespace 活動記録システム
             File.AppendAllText("./member.txt", member_name.Text + "\n");
             updateMember();
             member_name.Text = "";
+        }
+
+        private void dataGrid_SelectedCellsChanged(object sender, System.Windows.Controls.SelectedCellsChangedEventArgs e)
+        {
+            Activity item = Collection[dataGrid.SelectedIndex];
+            string date = item.Date;
+            string name = item.Name;
+            string title = item.Title;
+            string content = item.Content;
+            _browser.LoadHtml(content);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var host = new System.Windows.Forms.Integration.WindowsFormsHost();
+            _browser = new GeckoWebBrowser();
+            host.Child = _browser;
+            webBrowser.Children.Add(host);
         }
     }
 
