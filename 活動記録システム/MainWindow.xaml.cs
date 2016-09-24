@@ -118,7 +118,11 @@ namespace 活動記録システム
             string name = item.Name;
             string title = item.Title;
             string content = item.Content;
-            _browser.LoadHtml(content);
+            _browser.LoadHtml(
+                "<!DOCTYPE html><html lang='ja'><head><style>body { font-family: メイリオ; }</style></head><body>" +
+                "<h1>" + title + "</h1><p>" + date + "</p><p>" + content + "</p>" +
+                "</body></html>"
+            );
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

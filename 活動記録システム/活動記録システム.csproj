@@ -144,7 +144,6 @@
     <Content Include="help.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="viewer.html" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="MSHTML">
