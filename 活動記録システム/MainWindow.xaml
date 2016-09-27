@@ -11,6 +11,7 @@
     <Grid Margin="0">
         <Menu Name="menu" VerticalAlignment="Top">
             <MenuItem Header="ファイル">
+                <MenuItem Name="export" Header="Excel(.xlsx)形式で活動履歴をエクスポート" Click="export_Click"/>
                 <MenuItem Name="close" Header="閉じる" Click="close_Click" />
             </MenuItem>
             <MenuItem Header="ヘルプ">

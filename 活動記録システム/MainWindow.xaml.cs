@@ -1,5 +1,5 @@
 ﻿using Gecko;
-using System;
+using ClosedXML.Excel;
 using System.Windows;
 using System.IO;
 using System.Text;
@@ -134,6 +134,24 @@ namespace 活動記録システム
                 "<h1>" + title + "</h1><p>" + date + "</p><p>" + content + "</p>" +
                 "</body></html>"
             );
+        }
+
+        private void export_Click(object sender, RoutedEventArgs e)
+        {
+            using (XLWorkbook wb = new XLWorkbook())
+            using (IXLWorksheet ws = wb.Worksheets.Add("Sheet1"))
+            {
+                for (var i = 0; i <= Collection.Count - 1; i++)
+                {
+                    Activity activity = Collection[i];
+                    ws.Cell(i + 1, 1).Value = activity.Date;
+                    ws.Cell(i + 1, 2).Value = activity.Name;
+                    ws.Cell(i + 1, 3).Value = activity.Title;
+                    ws.Cell(i + 1, 4).Value = activity.Content;
+                }
+
+                wb.SaveAs("activity.xlsx");
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
