@@ -129,7 +129,7 @@ namespace 活動記録システム
             string title = item.Title;
             string content = item.Content;
             _browser.LoadHtml(
-                "<!DOCTYPE html><html lang='ja'><head><style>body { font-family: メイリオ; }</style></head><body>" +
+                "<!DOCTYPE html><html lang='ja'><head><meta charset='utf-8'><style>body { font-family: メイリオ; }</style></head><body>" +
                 "<h1>" + title + "</h1><p>" + date + "</p><p>" + content + "</p>" +
                 "</body></html>"
             );
