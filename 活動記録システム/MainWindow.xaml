@@ -26,13 +26,17 @@
             <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
             <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top"/>
             <TextBox Name="content" Margin="10,196,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
-            <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+            <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Height="25"/>
             <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
             <Button Name="button1" Content="部員を追加する" Margin="181,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95" Click="add_member_Click" Height="25"/>
             <TextBox Name="member_name" Height="25" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="166"/>
             <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
             <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}" DisplayMemberPath="Name"/>
             <Grid Name="webBrowser" Margin="332,10,0,10" />
+            <ComboBox Name="format" HorizontalAlignment="Left" Margin="90,289,0,0" Width="120" Height="25" VerticalAlignment="Top">
+                <ComboBoxItem IsSelected="True">Plain Text</ComboBoxItem>
+                <ComboBoxItem>HTML</ComboBoxItem>
+            </ComboBox>
         </Grid>
     </Grid>
 </Window>

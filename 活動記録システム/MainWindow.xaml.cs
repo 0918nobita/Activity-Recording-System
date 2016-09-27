@@ -1,4 +1,5 @@
 ﻿using Gecko;
+using System;
 using System.Windows;
 using System.IO;
 using System.Text;
@@ -84,7 +85,15 @@ namespace 活動記録システム
             if (date.Text.Equals("")) { MessageBox.Show("日付が選択されていません"); return; }
             if (title.Text.Equals("")) { MessageBox.Show("タイトルが入力されていません"); return; }
             if (content.Text.Equals("")) { MessageBox.Show("内容が入力されていません"); return; }
-            File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name + "," + title.Text + "," + content.Text + "\n");
+
+            if (format.Text == "Plain Text")
+            {
+                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name + "," + title.Text + "," + content.Text.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\r\n", "<br>").Replace("\r", "<br>").Replace("\n", "<br>") + "\n");
+            } else
+            {
+                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name + "," + title.Text + "," + content.Text.Replace("\r", "").Replace("\n", "") + "\n");
+            }
+
             updateHistory();
         }
 
@@ -100,7 +109,7 @@ namespace 活動記録システム
 
         private void version_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("活動記録システム Version 1.0\n対象フレームワーク .NET Framework 4.5.2\n開発者 0918nobita");
+            MessageBox.Show("活動記録システム Version 1.1.0\n対象フレームワーク .NET Framework 4.5.2\n開発者 0918nobita");
         }
 
         private void add_member_Click(object sender, RoutedEventArgs e)
@@ -113,6 +122,7 @@ namespace 活動記録システム
 
         private void dataGrid_SelectedCellsChanged(object sender, System.Windows.Controls.SelectedCellsChangedEventArgs e)
         {
+            if (dataGrid.SelectedIndex < 0) return;
             Activity item = Collection[dataGrid.SelectedIndex];
             string date = item.Date;
             string name = item.Name;
