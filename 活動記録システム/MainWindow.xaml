@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:活動記録システム"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="活動記録システム" Height="622.215" Width="1000" Name="Window" MinWidth="400" MinHeight="365"
+        Title="活動記録システム" Height="610.75" Width="1000" Name="Window" MinWidth="400" MinHeight="365"
         Loaded="Window_Loaded">
     <Grid Margin="0">
         <Menu Name="menu" VerticalAlignment="Top">
@@ -18,25 +18,26 @@
                 <MenuItem Header="バージョン情報" Click="version_Click"/>
             </MenuItem>
         </Menu>
-        <Grid DataContext="{Binding ., ElementName=Window}" Margin="10,18,10,0">
+        <Grid DataContext="{Binding ., ElementName=Window}" Margin="10,18,10,10">
             <Label Name="label" Content="今日の活動内容を書いてください" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,1.55"/>
-            <DataGrid Name="dataGrid" Margin="10,340,0,40" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True" HorizontalAlignment="Left" Width="317" SelectedCellsChanged="dataGrid_SelectedCellsChanged"/>
+            <DataGrid Name="dataGrid" Margin="10,345,0,40" ItemsSource="{Binding Collection}" CanUserAddRows="False" IsReadOnly="True" HorizontalAlignment="Left" Width="317" SelectedCellsChanged="dataGrid_SelectedCellsChanged"/>
             <TextBox Name="title" Height="18" Margin="10,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="317"/>
             <Label Name="label1" Content="タイトル" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
             <Label Name="label1_Copy" Content="内容" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
-            <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top"/>
-            <TextBox Name="content" Margin="10,196,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
-            <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Height="25"/>
+            <Label Name="label1_Copy1" Content="履歴" HorizontalAlignment="Left" Margin="10,319,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="content" Margin="10,201,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="88" VerticalAlignment="Top" HorizontalAlignment="Left" Width="317"/>
+            <Button Name="button" Content="記録する" HorizontalAlignment="Left" Margin="10,294,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Height="25"/>
             <DatePicker Name="date" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" SelectedDate="{x:Static sys:DateTime.Now}"/>
             <Button Name="button1" Content="部員を追加する" Margin="181,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95" Click="add_member_Click" Height="25"/>
             <TextBox Name="member_name" Height="25" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="166"/>
             <Label Name="label2" Content="名前" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
             <ComboBox Name="comboBox" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="120" Height="25" ItemsSource="{Binding MemberCollection}" DisplayMemberPath="Name"/>
             <Grid Name="webBrowser" Margin="332,10,0,10" />
-            <ComboBox Name="format" HorizontalAlignment="Left" Margin="90,289,0,0" Width="120" Height="25" VerticalAlignment="Top">
+            <ComboBox Name="format" HorizontalAlignment="Left" Margin="207,172,0,0" Width="120" Height="25" VerticalAlignment="Top">
                 <ComboBoxItem IsSelected="True">Plain Text</ComboBoxItem>
                 <ComboBoxItem>HTML</ComboBoxItem>
             </ComboBox>
+            <Label x:Name="label3" Content="入力モード：" HorizontalAlignment="Left" Margin="136,172,0,0" Height="24" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>
