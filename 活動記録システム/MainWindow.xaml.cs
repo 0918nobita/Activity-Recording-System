@@ -55,7 +55,7 @@ namespace 活動記録システム
                     if (!line.Equals(""))
                     {
                         string[] cells = line.Split(',');
-                        Collection.Insert(0, new Activity { Date = cells[0], Name = cells[1], Title = cells[2], Content = cells[3] });
+                        Collection.Insert(0, new Activity { Date = cells[0], Name = cells[1].Replace(";;", ","), Title = cells[2].Replace(";;", ","), Content = cells[3].Replace(";;", ",") });
                     }
                 }
             }
@@ -88,10 +88,10 @@ namespace 活動記録システム
 
             if (format.Text == "Plain Text")
             {
-                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name + "," + title.Text + "," + content.Text.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\r\n", "<br>").Replace("\r", "<br>").Replace("\n", "<br>") + "\n");
+                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name.Replace(",", ";;") + "," + title.Text.Replace(",", ";;") + "," + content.Text.Replace(",", ";;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\r\n", "<br>").Replace("\r", "<br>").Replace("\n", "<br>") + "\n");
             } else
             {
-                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name + "," + title.Text + "," + content.Text.Replace("\r", "").Replace("\n", "") + "\n");
+                File.AppendAllText(@path, date.Text + "," + MemberCollection[comboBox.SelectedIndex].Name.Replace(",", ";;") + "," + title.Text.Replace(",", ";;") + "," + content.Text.Replace(",", ";;").Replace("\r", "").Replace("\n", "") + "\n");
             }
 
             updateHistory();
